@@ -2,26 +2,19 @@ function batida(idAudio) {
   document.querySelector(idAudio).play();
   //código esta guardando entre parenteses para ser exectado apenas com a execução
 }
-
 const listaTeclas = document.querySelectorAll(".tecla");
 //isto é uma referencia, o valor é constante pois não vai mudar
-
-let i = 0;
-
-while (i < listaTeclas.length) {
+for (let i = 0; i < listaTeclas.length; i++) {
   const tecla = listaTeclas[i];
-
   const instrumento = tecla.classList[1];
   //na lista de classes, o 1 valor é o nome diferente das teclas (tecla_pom)
   //assim podemos acessar cada botão unico
-
   const idAudio = `#som_${instrumento}`;
 
   tecla.onclick = function () {
     batida(idAudio);
   };
   //uma função anonima
-  i++;
   //console.log(i);
 }
 
