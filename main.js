@@ -1,5 +1,15 @@
 function batida(idAudio) {
-  document.querySelector(idAudio).play();
+  const elemento = document.querySelector(idAudio);
+
+  //caso coloque um numero, caso coloque outro caracter vai dar erros diferentes, não queremos exibir erros
+  //dessa maneira
+  //aqui não precisamos botar elemento != null, pois ele já entende que o elemento deve existir para ser true
+  if (elemento && elemento.localName === "audio") {
+    elemento.play();
+  } else {
+    console.log("Elemento não encontrado");
+  }
+
   //código esta guardando entre parenteses para ser exectado apenas com a execução
 }
 const listaTeclas = document.querySelectorAll(".tecla");
@@ -16,6 +26,23 @@ for (let i = 0; i < listaTeclas.length; i++) {
   };
   //uma função anonima
   //console.log(i);
+
+  //ao apertar tab e apertar algum teclado
+  //tipo no unity
+  tecla.onkeydown = function (event) {
+    console.log(event.code);
+    //isto está válido pra todas as teclas, então devemos dar uma condição
+    if (event.code === "Space" || event.code === "Enter") {
+      tecla.classList.add("ativa");
+    }
+    //a propria linguagem fornece um executor para os eventos, para todas as funções atreladas a um evento
+    //como primeiro parametro podemos dar um nome qualquer para guardar os detalhes dos eventos acionados
+    //pode ser qualquer nome, normalmente botam event ou e
+    //ali todos os detalhes do evento são acionados
+  };
+  tecla.onkeyup = function () {
+    tecla.classList.remove("ativa");
+  };
 }
 
 //o navegador bloqueia funções que executa midias antes do usuario interagir com a página
@@ -31,4 +58,5 @@ caos contrário irá executar na hora, isso é por causa da ordem de execução 
 sem o parenteses vai guardar a referencia da função, e não sua execução ()
 
 ao o onclick ser executado, ele quer que retorne o som
+
 */

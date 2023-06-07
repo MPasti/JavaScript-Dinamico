@@ -1,5 +1,6 @@
 console.log(document.querySelector('input[value="2"]'));
 console.log(document.querySelector('input[type="tel"]'));
+
 //para buscar o elemento preciso com o querySelector
 console.log(document.querySelectorAll('input[type="button"]'));
 
@@ -18,9 +19,9 @@ function ImprimeValorNoInput(valorDaTecla) {
   InputDigiteSeuTelefone.value += valorDaTecla;
 }
 
-for (let contador = 0; contador < listaDeTeclas.length; contador++) {
+for (let i = 0; i < listaDeTeclas.length; i++) {
   // lista dos elementos de todas as teclas
-  const tecla = listaDeTeclas[contador];
+  const tecla = listaDeTeclas[i];
 
   // captura o valor de todas as teclas
   const valorDaTecla = tecla.value;
@@ -29,4 +30,19 @@ for (let contador = 0; contador < listaDeTeclas.length; contador++) {
   tecla.onclick = function () {
     ImprimeValorNoInput(valorDaTecla);
   };
+
+  tecla.onkeydown = function (evento) {
+    if (evento.code === "Enter" || evento.code === "Space") {
+      tecla.classList.add("ativa");
+    }
+  };
+
+  tecla.onkeyup = function () {
+    tecla.classList.remove("ativa");
+  };
 }
+
+/* 
+Um script que percorra a lista de teclas do telefone, e ao clicar em qualquer tecla do teclado,
+ imprima o valor no campo Digite seu telefone.
+*/

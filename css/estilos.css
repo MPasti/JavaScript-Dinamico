@@ -46,6 +46,12 @@ h1 {
   width: 120px;
 }
 
+
+/* active, para quando a telca for pressionada 
+também há a classe ativa, para representar o conjunto de estilos, que podem ser inseridas pelo js
+ao inserir esse nome na classe do html, ela vai ficar com o efeito de ativa, pq se trata do formato
+ao estar no active
+*/
 .tecla.ativa,
 .tecla:active {
   background-color: var(--vermelha);
